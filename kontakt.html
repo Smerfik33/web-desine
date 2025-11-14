@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kontakt — Nikodem Świeton</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Nawigacja">
+      <a href="index.html" class="navigation-button">Start</a>
+      <a href="o-mnie.html" class="navigation-button">O mnie</a>
+      <a href="umiejetnosci.html" class="navigation-button">Umiejętności</a>
+      <a href="projekty.html" class="navigation-button">Projekty</a>
+      <a href="kontakt.html" class="navigation-button">Kontakt</a>
+    </nav>
+  </header>
+
+  <main class="content-wrap">
+    <section class="contact card">
+      <h1>Formularz kontaktowy</h1>
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <label for="name">Imię</label>
+          <input type="text" id="name" name="name" placeholder="Twoje imię" />
+          <small class="error-message" id="nameError"></small>
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Twój adres e-mail" />
+          <small class="error-message" id="emailError"></small>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Wiadomość</label>
+          <textarea id="message" name="message" placeholder="Twoja wiadomość"></textarea>
+          <small class="error-message" id="messageError"></small>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="send-button">Wyślij</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Nikodem Świeton</p>
+  </footer>
+
+  <script>
+    // Walidacja formularza (lekka, client-side)
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+
+        nameError.textContent = '';
+        emailError.textContent = '';
+        messageError.textContent = '';
+
+        let valid = true;
+
+        if (name === '') {
+          nameError.textContent = 'Pole imię jest wymagane.';
+          valid = false;
+        }
+        if (email === '') {
+          emailError.textContent = 'Pole email jest wymagane.';
+          valid = false;
+        } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+          emailError.textContent = 'Podaj poprawny adres e-mail.';
+          valid = false;
+        }
+        if (message === '') {
+          messageError.textContent = 'Pole wiadomość jest wymagane.';
+          valid = false;
+        }
+
+        if (valid) {
+          alert('Dziękujemy! Twoja wiadomość została wysłana.');
+          form.reset();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
