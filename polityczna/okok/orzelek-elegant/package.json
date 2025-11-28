@@ -1,0 +1,22 @@
+{
+  "name": "orzelek-elegant",
+  "version": "1.0.0",
+  "description": "A stylish project with a red and white color scheme.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step not defined yet.'"
+  },
+  "keywords": [
+    "elegant",
+    "red",
+    "white",
+    "project"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
